@@ -26,3 +26,24 @@
   border-radius: 6px;
   border: 1px solid #ccc;
 }
+@media screen and (max-width: 600px) {
+  .book-list-container {
+    padding: 10px;
+  }
+
+  .search-input {
+    font-size: 0.95rem;
+    padding: 8px;
+    margin-bottom: 15px;
+  }
+
+  .filter-dropdown {
+    width: 100%;         
+    font-size: 0.95rem;
+    padding: 8px;
+  }
+
+  .book-grid {
+    gap: 15px;
+  }
+}

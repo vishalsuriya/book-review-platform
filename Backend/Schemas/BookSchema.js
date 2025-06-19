@@ -21,13 +21,4 @@ const bookSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-bookSchema.methods.calculateAverageRating = function () {
-  if (this.reviews.length === 0) {
-    this.averageRating = 0;
-  } else {
-    const sum = this.reviews.reduce((acc, review) => acc + review.rating, 0);
-    this.averageRating = sum / this.reviews.length;
-  }
-};
-
-module.exports = mongoose.model('Book', bookSchema);
+module.exports = mongoose.model('Books', bookSchema);

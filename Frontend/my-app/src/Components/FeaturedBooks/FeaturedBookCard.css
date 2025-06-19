@@ -51,3 +51,30 @@
 .book-card button:hover {
   background-color: #095fbb;
 }
+@media screen and (max-width: 600px) {
+  .book-card {
+    padding: 10px;
+  }
+
+  .book-card h3 {
+    font-size: 1rem;
+  }
+
+  .book-card p {
+    font-size: 0.85rem;
+  }
+
+  .book-card button {
+    padding: 6px 10px;
+    font-size: 0.85rem;
+  }
+
+  .book-card img {
+    height: 180px;
+  }
+
+  .book-grid {
+    gap: 10px;
+    padding: 8px;
+  }
+}
