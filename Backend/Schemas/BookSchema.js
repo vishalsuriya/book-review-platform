@@ -16,6 +16,7 @@ const bookSchema = new mongoose.Schema(
     description: { type: String },
     coverImage: { type: String },
     averageRating: { type: Number, default: 0 },
+    totalRating :{type : Number , default: 0},
     reviews: [reviewSchema],
   },
   { timestamps: true }
