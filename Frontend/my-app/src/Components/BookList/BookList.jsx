@@ -10,7 +10,7 @@ const BookList = () => {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/books/get-book"); 
+        const res = await axios.get("https://book-review-platform-server-cfuk.onrender.com/api/books/get-book"); 
         setBooks(res.data);
       } catch (err) {
         console.error("Error fetching books:", err);

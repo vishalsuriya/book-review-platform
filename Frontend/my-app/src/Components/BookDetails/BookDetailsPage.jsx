@@ -18,7 +18,7 @@ const BookDetailsPage = () => {
   useEffect(() => {
     const fetchBook = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/books/book-details/${id}`);
+        const res = await axios.get(`https://book-review-platform-server-cfuk.onrender.com/api/books/book-details/${id}`);
         setBook(res.data);
       } catch (err) {
         console.error("Error fetching book details:", err);
@@ -27,7 +27,7 @@ const BookDetailsPage = () => {
 
     const checkUser = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/users/profile", {
+        const res = await axios.get("https://book-review-platform-server-cfuk.onrender.com/api/users/profile", {
           withCredentials: true,
         });
         setUser(res.data);
@@ -48,12 +48,12 @@ const BookDetailsPage = () => {
   const handleReviewSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`http://localhost:5000/api/books/${id}/add-review`, reviewData, {
+      await axios.post(`https://book-review-platform-server-cfuk.onrender.com/api/books/${id}/add-review`, reviewData, {
         withCredentials: true,
       });
       setShowModal(false);
       setReviewData({ userName: '', rating: '', comment: '' });
-      const res = await axios.get(`http://localhost:5000/api/books/book-details/${id}`);
+      const res = await axios.get(`https://book-review-platform-server-cfuk.onrender.com/api/books/book-details/${id}`);
       setBook(res.data);
     } catch (err) {
       console.error("Error submitting review:", err);
@@ -63,14 +63,14 @@ const BookDetailsPage = () => {
   const handleRatingSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`http://localhost:5000/api/books/${id}/add-rating`, {
+      await axios.post(`https://book-review-platform-server-cfuk.onrender.com/api/books/${id}/add-rating`, {
         rating: ratingOnly
       }, {
         withCredentials: true,
       });
       setShowRatingModal(false);
       setRatingOnly('');
-      const res = await axios.get(`http://localhost:5000/api/books/book-details/${id}`);
+      const res = await axios.get(`https://book-review-platform-server-cfuk.onrender.com/api/books/book-details/${id}`);
       setBook(res.data);
     } catch (err) {
       console.error("Error submitting rating:", err);

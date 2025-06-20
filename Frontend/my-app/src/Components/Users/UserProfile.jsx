@@ -19,7 +19,7 @@ const UserProfile = () => {
     const fetchProfile = async () => {
       try {
         setLoading(true);
-        const { data } = await axios.get("http://localhost:5000/api/users/profile", {
+        const { data } = await axios.get("https://book-review-platform-server-cfuk.onrender.com/api/users/profile", {
           withCredentials: true,
         });
         setName(data.name);
@@ -67,7 +67,7 @@ const UserProfile = () => {
     try {
       setLoading(true);
       const response = await axios.put(
-        "http://localhost:5000/api/users/updateProfile",
+        "https://book-review-platform-server-cfuk.onrender.com/api/users/updateProfile",
         {
           name,
           email,

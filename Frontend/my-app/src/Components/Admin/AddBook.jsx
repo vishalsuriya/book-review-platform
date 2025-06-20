@@ -20,7 +20,7 @@ const AddBook = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post('http://localhost:5000/api/books/post-book', form);
+      const res = await axios.post('https://book-review-platform-server-cfuk.onrender.com/api/books/post-book', form);
       setMessage(' Book created successfully!');
       setForm({ title: '', author: '', description: '', coverImage: '' });
     } catch (err) {

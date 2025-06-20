@@ -12,7 +12,7 @@ function NavigationBar() {
   useEffect(() => {
     const checkUser = async () => {
       try {
-        const { data } = await axios.get("http://localhost:5000/api/users/profile", {
+        const { data } = await axios.get("https://book-review-platform-server-cfuk.onrender.com/api/users/profile", {
           withCredentials: true,
         });
         setUser(data);
@@ -26,7 +26,7 @@ function NavigationBar() {
 
   const handleLogout = async () => {
     try {
-      await axios.post("http://localhost:5000/api/users/logout", {}, {
+      await axios.post("https://book-review-platform-server-cfuk.onrender.com/api/users/logout", {}, {
         withCredentials: true,
       });
       setUser(null);

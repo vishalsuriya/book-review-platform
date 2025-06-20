@@ -48,7 +48,7 @@ const UserRegister = () => {
       formData.append("pic", pic);
 
       const { data } = await axios.post(
-        "http://localhost:5000/api/users/register",
+        "https://book-review-platform-server-cfuk.onrender.com/api/users/register",
         formData,
         {
           headers: {
