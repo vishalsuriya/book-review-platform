@@ -33,6 +33,8 @@ const BookDetailsPage = () => {
         setUser(null);
       }
     };
+
+    fetchBook();
     checkUser();
   }, [id]);
 
