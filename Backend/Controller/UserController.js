@@ -71,10 +71,15 @@ const login = async (req, res) => {
 const getProfile = async (req, res) => {
   res.json(req.user); 
 };
-const logout = async(req,res)=>{
-  res.clearCookie("jwt");
-  res.json({ message : "Logged out sucessfully"});
-}
+const logout = async (req, res) => {
+  res.clearCookie("jwt", {
+    httpOnly: true,
+    secure: true,         
+    sameSite: "None",     
+  });
+  res.status(200).json({ message: "Logged out successfully" });
+};
+
 const updateProfile = async (req, res) => {
   const user = await User.findById(req.user._id);
 
