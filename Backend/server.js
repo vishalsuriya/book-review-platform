@@ -11,7 +11,7 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-  origin: "https://book-review-platform-server-cfuk.onrender.com",
+  origin: "https://book-review-platform-beta.vercel.app",
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
