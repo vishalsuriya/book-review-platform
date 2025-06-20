@@ -8,7 +8,7 @@ import Footer from "../Footer/Footer";
 const BookDetailsPage = () => {
   const { id } = useParams(); 
   const [book, setBook] = useState(null);
-
+  const [user, setUser] = useState(null); 
   const [showModal, setShowModal] = useState(false);           
   const [showRatingModal, setShowRatingModal] = useState(false); 
 
@@ -25,7 +25,19 @@ const BookDetailsPage = () => {
       }
     };
 
+    const checkUser = async () => {
+      try {
+        const res = await axios.get("http://localhost:5000/api/users/profile", {
+          withCredentials: true,
+        });
+        setUser(res.data);
+      } catch (err) {
+        setUser(null);
+      }
+    };
+
     fetchBook();
+    checkUser();
   }, [id]);
 
   const handleReviewChange = (e) => {
@@ -36,7 +48,9 @@ const BookDetailsPage = () => {
   const handleReviewSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`http://localhost:5000/api/books/${id}/add-review`, reviewData);
+      await axios.post(`http://localhost:5000/api/books/${id}/add-review`, reviewData, {
+        withCredentials: true,
+      });
       setShowModal(false);
       setReviewData({ userName: '', rating: '', comment: '' });
       const res = await axios.get(`http://localhost:5000/api/books/book-details/${id}`);
@@ -51,6 +65,8 @@ const BookDetailsPage = () => {
     try {
       await axios.post(`http://localhost:5000/api/books/${id}/add-rating`, {
         rating: ratingOnly
+      }, {
+        withCredentials: true,
       });
       setShowRatingModal(false);
       setRatingOnly('');
@@ -75,8 +91,31 @@ const BookDetailsPage = () => {
           <p><strong>Average Rating:</strong> {book.averageRating?.toFixed(1) || "No ratings yet"}</p>
 
           <div className="review-buttons">
-            <button className="review-btn" onClick={() => setShowModal(true)}>Submit your Review</button>
-            <button className="rating-btn" onClick={() => setShowRatingModal(true)}>Give Rating</button>
+            <button
+              className="review-btn"
+              onClick={() => {
+                if (user) {
+                  setShowModal(true);
+                } else {
+                  alert("Please log in to submit a review.");
+                }
+              }}
+            >
+              Submit your Review
+            </button>
+
+            <button
+              className="rating-btn"
+              onClick={() => {
+                if (user) {
+                  setShowRatingModal(true);
+                } else {
+                  alert("Please log in to give a rating.");
+                }
+              }}
+            >
+              Give Rating
+            </button>
           </div>
 
           <h3>Reviews</h3>
@@ -94,7 +133,7 @@ const BookDetailsPage = () => {
         </div>
         {showModal && (
           <div className="modal-overlay">
-            <div className="modal">
+            <div className="modal-box">
               <h2>Submit a Review</h2>
               <form onSubmit={handleReviewSubmit}>
                 <input
@@ -132,7 +171,7 @@ const BookDetailsPage = () => {
         )}
         {showRatingModal && (
           <div className="modal-overlay">
-            <div className="modal">
+            <div className="modal-box">
               <h2>Submit a Rating</h2>
               <form onSubmit={handleRatingSubmit}>
                 <input

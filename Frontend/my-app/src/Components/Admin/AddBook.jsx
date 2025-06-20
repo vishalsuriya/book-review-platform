@@ -21,11 +21,12 @@ const AddBook = () => {
 
     try {
       const res = await axios.post('http://localhost:5000/api/books/post-book', form);
-      setMessage('✅ Book created successfully!');
+      setMessage(' Book created successfully!');
       setForm({ title: '', author: '', description: '', coverImage: '' });
     } catch (err) {
-      setMessage('❌ Failed to create book.');
+      setMessage(' Failed to create book.');
     }
+     setTimeout(() => setMessage(''), 2000);
   };
 
   return (

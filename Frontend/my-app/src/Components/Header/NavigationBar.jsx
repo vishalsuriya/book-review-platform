@@ -5,19 +5,19 @@ import axios from "axios";
 import { List } from "react-bootstrap-icons";
 
 function NavigationBar() {
-  const [userLoggedIn, setUserLoggedIn] = useState(false);
+  const [user, setUser] = useState(null);
   const [showMenu, setShowMenu] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
     const checkUser = async () => {
       try {
-        await axios.get("http://localhost:5000/api/users/profile", {
+        const { data } = await axios.get("http://localhost:5000/api/users/profile", {
           withCredentials: true,
         });
-        setUserLoggedIn(true);
+        setUser(data);
       } catch (err) {
-        setUserLoggedIn(false);
+        setUser(null);
       }
     };
 
@@ -29,13 +29,13 @@ function NavigationBar() {
       await axios.post("http://localhost:5000/api/users/logout", {}, {
         withCredentials: true,
       });
-      setUserLoggedIn(false);
+      setUser(null);
       navigate("/");
     } catch (error) {
       console.error("Logout failed:", error);
     }
   };
-
+ console.log(user)
   return (
     <nav className="navbar">
       <div className="navbar-brand">
@@ -52,9 +52,13 @@ function NavigationBar() {
       <ul className={`navbar-links ${showMenu ? "show" : ""}`}>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/allbooks">All Books</Link></li>
-        {userLoggedIn ? (
+        {user ? (
           <>
-            <li><Link to="/profile">My Profile</Link></li>
+            {user.isAdmin ? (
+              <li><Link to="/addbook">Add Book</Link></li>
+            ) : (
+              <li><Link to="/profile">My Profile</Link></li>
+            )}
             <li><button onClick={handleLogout} className="logout-btn">Logout</button></li>
           </>
         ) : (
