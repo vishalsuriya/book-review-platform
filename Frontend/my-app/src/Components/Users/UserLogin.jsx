@@ -101,12 +101,6 @@ function UserLogin() {
                 <small className="text-body-secondary">
                   New Customer? <Link to="/register">Register here</Link>
                 </small>
-                <Link
-                  to="/forgot-password"
-                  className="btn btn-sm btn-outline-primary"
-                >
-                  Forgot password?
-                </Link>
               </div>
             </Form>
           </div>
