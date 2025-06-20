@@ -4,17 +4,15 @@ import axios from 'axios';
 import '../BookDetails/BookDetailsPage.css';
 import NavigationBar from "../Header/NavigationBar";
 import Footer from "../Footer/Footer";
-
+import NavigationBar2 from "../Header/NavigationBar2"
 const BookDetailsPage = () => {
   const { id } = useParams(); 
   const [book, setBook] = useState(null);
   const [user, setUser] = useState(null); 
   const [showModal, setShowModal] = useState(false);           
   const [showRatingModal, setShowRatingModal] = useState(false); 
-
   const [reviewData, setReviewData] = useState({ userName: '', rating: '', comment: '' });
   const [ratingOnly, setRatingOnly] = useState(''); 
-
   useEffect(() => {
     const fetchBook = async () => {
       try {
@@ -35,8 +33,6 @@ const BookDetailsPage = () => {
         setUser(null);
       }
     };
-
-    fetchBook();
     checkUser();
   }, [id]);
 
@@ -81,7 +77,7 @@ const BookDetailsPage = () => {
 
   return (
     <div>
-      <NavigationBar />
+       {user? <NavigationBar2 /> : <NavigationBar />}
       <div className="book-detail-container">
         <img src={book.coverImage} alt={book.title} className="book-cover" />
         <div className="book-detail-info">

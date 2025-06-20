@@ -52,7 +52,6 @@ function NavigationBar() {
       <ul className={`navbar-links ${showMenu ? "show" : ""}`}>
         <li><Link to="/userlogin">Home</Link></li>
         <li><Link to="/allbooks">All Books</Link></li>
-        {user ? (
           <>
             {user.isAdmin ? (
               <li><Link to="/addbook">Add Book</Link></li>
@@ -61,9 +60,7 @@ function NavigationBar() {
             )}
             <li><button onClick={handleLogout} className="logout-btn">Logout</button></li>
           </>
-        ) : (
-          <li><Link to="/login">Login</Link></li>
-        )}
+       
       </ul>
     </nav>
   );
