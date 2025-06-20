@@ -5,6 +5,9 @@ import BookList from "./Components/BookList/BookList";
 import AddBook from "./Components/Admin/AddBook";
 import BookDetailsPage from "./Components/BookDetails/BookDetailsPage";
 import "../src/Components/index.css";
+import UserRegister from "./Components/Users/UserRegister";
+import UserLogin from "./Components/Users/UserLogin";
+import UserProfile from "./Components/Users/UserProfile";
 function App() {
   return (
     <Routes>
@@ -12,6 +15,9 @@ function App() {
       <Route path="/allbooks" element={<BookList />} />
       <Route path="/addbook" element={<AddBook />} />
       <Route path="/books/:id" element={<BookDetailsPage />} />
+      <Route path ="/register" element = {<UserRegister />} />
+      <Route path = "/login" element = {<UserLogin />} />
+      <Route path="/profile" element = {<UserProfile />} />
     </Routes>
   );
 }

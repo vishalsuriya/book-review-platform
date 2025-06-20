@@ -75,7 +75,7 @@ const BookDetailsPage = () => {
           <p><strong>Average Rating:</strong> {book.averageRating?.toFixed(1) || "No ratings yet"}</p>
 
           <div className="review-buttons">
-            <button className="review-btn" onClick={() => setShowModal(true)}>Give Review</button>
+            <button className="review-btn" onClick={() => setShowModal(true)}>Submit your Review</button>
             <button className="rating-btn" onClick={() => setShowRatingModal(true)}>Give Rating</button>
           </div>
 
