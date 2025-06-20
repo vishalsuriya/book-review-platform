@@ -14,20 +14,20 @@ const BookDetailsPage = () => {
   const [userLoggedIn, setUserLoggedIn] = useState(false);
   const [reviewData, setReviewData] = useState({ userName: '', rating: '', comment: '' });
   const [ratingOnly, setRatingOnly] = useState(''); 
-useEffect(() => {
-    const checkUser = async () => {
-      try {
-        await axios.get("https://book-review-platform-server-cfuk.onrender.com/api/users/profile", {
-          withCredentials: true,
-        });
-        setUserLoggedIn(true);
-      } catch (err) {
-        setUserLoggedIn(false);
-      }
-    };
+// useEffect(() => {
+//     const checkUser = async () => {
+//       try {
+//         await axios.get("https://book-review-platform-server-cfuk.onrender.com/api/users/profile", {
+//           withCredentials: true,
+//         });
+//         setUserLoggedIn(true);
+//       } catch (err) {
+//         setUserLoggedIn(false);
+//       }
+//     };
 
-    checkUser();
-  }, []);
+//     checkUser();
+//   }, []);
   useEffect(() => {
     const fetchBook = async () => {
       try {
@@ -94,7 +94,7 @@ useEffect(() => {
 
   return (
     <div>
-     {userLoggedIn ? <NavigationBar2 /> : <NavigationBar />}
+     {user ? <NavigationBar2 /> : <NavigationBar />}
       <div className="book-detail-container">
         <img src={book.coverImage} alt={book.title} className="book-cover" />
         <div className="book-detail-info">

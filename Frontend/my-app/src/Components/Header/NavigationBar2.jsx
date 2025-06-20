@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { List } from "react-bootstrap-icons";
 
-function NavigationBar() {
+function NavigationBar2() {
   const [user, setUser] = useState(null);
   const [showMenu, setShowMenu] = useState(false);
   const navigate = useNavigate();
@@ -52,6 +52,8 @@ function NavigationBar() {
       <ul className={`navbar-links ${showMenu ? "show" : ""}`}>
         <li><Link to="/userlogin">Home</Link></li>
         <li><Link to="/allbooks">All Books</Link></li>
+
+        {user ? (
           <>
             {user.isAdmin ? (
               <li><Link to="/addbook">Add Book</Link></li>
@@ -60,10 +62,10 @@ function NavigationBar() {
             )}
             <li><button onClick={handleLogout} className="logout-btn">Logout</button></li>
           </>
-       
+        ) : null}
       </ul>
     </nav>
   );
 }
 
-export default NavigationBar;
+export default NavigationBar2;
