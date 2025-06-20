@@ -18,7 +18,6 @@ const FeaturedBookCard = () => {
 },[])
 
   const [Books,setBooks] = useState([]);
-   console.log(Books);
   return (
     <div className="book-grid">
       {Books.map((book) => (
