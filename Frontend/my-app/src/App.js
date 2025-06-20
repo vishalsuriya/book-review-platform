@@ -7,6 +7,7 @@ import BookDetailsPage from "./Components/BookDetails/BookDetailsPage";
 import "../src/Components/index.css";
 import UserRegister from "./Components/Users/UserRegister";
 import UserLogin from "./Components/Users/UserLogin";
+import AfterLogin from "./Components/Home/AfterLogin";
 import UserProfile from "./Components/Users/UserProfile";
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Route path ="/register" element = {<UserRegister />} />
       <Route path = "/login" element = {<UserLogin />} />
       <Route path="/profile" element = {<UserProfile />} />
+      <Route path="/userlogin" element = {<AfterLogin />} />
     </Routes>
   );
 }

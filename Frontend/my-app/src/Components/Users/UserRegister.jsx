@@ -59,7 +59,7 @@ const UserRegister = () => {
       );
 
       setLoading(false);
-      navigate("/");
+      navigate("/userlogin");
     } catch (error) {
       setLoading(false);
       setMessage(

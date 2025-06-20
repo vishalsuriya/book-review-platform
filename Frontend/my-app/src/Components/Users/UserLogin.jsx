@@ -39,7 +39,7 @@ function UserLogin() {
       );
 
       setLoading(false);
-      navigate('/'); 
+      navigate('/userlogin'); 
     } catch (err) {
       setLoading(false);
       setError(err.response?.data?.message || 'Login failed');
